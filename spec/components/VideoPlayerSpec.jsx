@@ -39,7 +39,6 @@ describe ('VideoPlayer', function() {
     var cuteCatVideoIFrameElement = findRenderedDOMComponentWithClass(cuteCatVideo, 'embed-responsive-item');
     var superCuteCatVideoIFrameElement = findRenderedDOMComponentWithClass(superCuteCatVideo, 'embed-responsive-item');
     var hackReactorVideoIFrameElement = findRenderedDOMComponentWithClass(hackReactorVideo, 'embed-responsive-item');
-
     expect(cuteCatVideoIFrameElement.src).to.equal('https://www.youtube.com/embed/000001');
     expect(superCuteCatVideoIFrameElement.src).to.equal('https://www.youtube.com/embed/000002');
     expect(hackReactorVideoIFrameElement.src).to.equal('https://www.youtube.com/embed/000003');
