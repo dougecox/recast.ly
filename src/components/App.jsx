@@ -3,11 +3,24 @@ class App extends React.Component {
     super(props);
     this.state = {
       index: 0,
-      videos: exampleVideoData
+      videos: exampleVideoData,
+      query: ''
     };
     this.onListItemClick = this.onListItemClick.bind(this);
   }
 
+  componentDidMount() { 
+    this.callSearchYouTube({key: window.YOUTUBE_API_KEY, max: 5, query: ''});
+  }
+
+  callSearchYouTube(options) {
+    options.query = this.state.query;
+    this.props.searchYouTube(options, function(data) {
+      this.setState({
+        videos: data
+      });
+    }.bind(this));
+  }
   onListItemClick(i) {
     this.setState({
       index: i
@@ -15,7 +28,6 @@ class App extends React.Component {
   }
 
   render() {
-    
     return (
       <div>
           <Nav />
