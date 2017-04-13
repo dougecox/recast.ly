@@ -2,14 +2,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVideo: exampleVideoData[0]
+      index: 0,
+      videos: exampleVideoData
     };
+    this.onListItemClick = this.onListItemClick.bind(this);
   }
 
-  onListItemClick() {
+  onListItemClick(i) {
     this.setState({
-      //currentVideo: this.state.currentVideo[this.state.index];
-      // possible pass function state down
+      index: i
     });
   }
 
@@ -19,10 +20,10 @@ class App extends React.Component {
       <div>
           <Nav />
           <div className="col-md-7">
-            <VideoPlayer video = {exampleVideoData[3]}/>
+            <VideoPlayer video = {this.state.videos[this.state.index]}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos = {exampleVideoData}/>
+            <VideoList videos = {this.state.videos} clickFunction = {this.onListItemClick}/>
           </div>
       </div>
     );
