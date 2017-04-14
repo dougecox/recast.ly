@@ -7,6 +7,8 @@ class App extends React.Component {
       query: ''
     };
     this.onListItemClick = this.onListItemClick.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onSearchClick = this.onSearchClick.bind(this);
   }
 
   componentDidMount() { 
@@ -19,7 +21,7 @@ class App extends React.Component {
       this.setState({
         videos: data
       });
-    }.bind(this));
+    });
   }
   onListItemClick(i) {
     this.setState({
@@ -27,10 +29,24 @@ class App extends React.Component {
     });
   }
 
+  onInputChange(event) {
+    console.log(event.currentTarget);
+    this.setState({
+      query: event.currentTarget.value
+    });
+  }
+
+  onSearchClick() {
+    this.setState({
+      
+    });
+  }
+
+
   render() {
     return (
       <div>
-          <Nav />
+          <Nav text = {this.state.query} searchFunction = {this.onSearchClick} inputFunction = {this.onInputChange}/>
           <div className="col-md-7">
             <VideoPlayer video = {this.state.videos[this.state.index]}/>
           </div>
