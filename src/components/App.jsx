@@ -30,16 +30,15 @@ class App extends React.Component {
   }
 
   onInputChange(event) {
-    console.log(event.currentTarget);
+    console.log(event.currentTarget.value);
     this.setState({
       query: event.currentTarget.value
     });
   }
 
   onSearchClick() {
-    this.setState({
-      
-    });
+    console.log(this);
+    this.callSearchYouTube({key: window.YOUTUBE_API_KEY, max: 5, query:''})
   }
 
 
